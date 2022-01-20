@@ -1,6 +1,8 @@
 // initiating an object where express will store things behind scenes
 const express = require("express");
 
+const path = require("path");
+
 const adminRoutes = require("./routes/admin");
 const shopRoutes = require("./routes/shop");
 
@@ -17,8 +19,7 @@ app.use("/shop", shopRoutes);
 // next will run when called and go on to next middlewar funcitron in the line (if you don't send response>>  will not go on to next middleware)
 
 app.use((req, res, next) => {
-  console.log(404);
-  res.status(404).send("<h1>page not found</h1>");
+  res.sendFile(path.join(__dirname, "./", "views", "fourohfour.html"));
 });
 
 app.listen(3000);
