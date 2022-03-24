@@ -22,7 +22,7 @@ app.use("/shop", shopRoutes);
 const rootDir = require("./util/path");
 
 app.use((req, res, next) => {
-  res.sendFile(path.join(rootDir, "views", "fourohfour.html"));
+  res.sendFile(path.join(rootDir, "views", "404.html"));
 });
 
 app.listen(3000);
