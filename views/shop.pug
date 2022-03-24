@@ -1,0 +1,23 @@
+//- pug does not use HTML by typing html, and selecting the HTML5 option pug template will generate in pug style
+
+  //- indentation matters in pug >> nesting structure with indentation
+  
+  //- dot notation to indicate classes
+doctype html
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(http-equiv="X-UA-Compatible", content="IE=edge")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    title Shop
+    link(rel="stylesheet", href="/css/main.css")
+    link(rel="stylesheet", href="/css/product.css")
+  body 
+    header.main-header
+      nav.main-header__nav
+        ul.main-header__item-list
+          li.main-header__item
+            a.active(href="/shop") Shop
+          li.main-header__item
+            a(href="/admin/add-product") Add Product
+    main this pug!
