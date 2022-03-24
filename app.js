@@ -30,7 +30,7 @@ app.set("views", "views");
 const rootDir = require("./util/path");
 
 app.use((req, res, next) => {
-  res.sendFile(path.join(rootDir, "views", "404.html"));
+  res.render("404");
 });
 
 app.listen(3000);

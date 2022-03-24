@@ -11,14 +11,14 @@ const router = express.Router();
 const products = [];
 
 router.get("/add-product", (req, res, next) => {
-  res.sendFile(path.join(rootDir, "views", "add-product.html"));
+  res.render("add-product", { docTitle: "Add Product" });
 });
 
 router.post("/add-product", (req, res) => {
   console.log(req.body);
   // fok 3) push returned info into product... return is an object, so push object
   products.push({ title: req.body.title });
-  res.redirect("/");
+  res.redirect("/shop");
 });
 
 //multiple exports from this page with router info as well as form value info.
