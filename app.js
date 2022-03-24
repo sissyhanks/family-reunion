@@ -1,6 +1,8 @@
 // initiating an object where express will store things behind scenes
 const express = require("express");
 
+var PORT = process.env.PORT || 3000;
+
 const path = require("path");
 
 const adminData = require("./routes/admin");
@@ -27,6 +29,6 @@ app.use((req, res, next) => {
   res.sendFile(path.join(rootDir, "views", "404.html"));
 });
 
-app.listen(3000);
+app.listen(PORT);
 
 // module.exports = path.dirname(require.main.filename);

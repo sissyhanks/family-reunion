@@ -1,7 +1,7 @@
 {
-  "name": "first-server",
+  "name": "family-reunion",
   "version": "1.0.0",
-  "description": "",
+  "description": "This app was not intended to be a non profit organization. It just turned out that way.",
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
