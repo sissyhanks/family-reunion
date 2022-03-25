@@ -12,7 +12,12 @@ const router = express.Router();
 router.get("/", (req, res, next) => {
   const products = adminData.products;
   // fok 2) grab data entered into form
-  res.render("shop", { title: "Shopp", products: products });
+  res.render("shop", {
+    title: "Shopp",
+    products: products,
+    add: false,
+    store: true,
+  });
 });
 
 module.exports = router;
