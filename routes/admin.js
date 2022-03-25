@@ -12,7 +12,11 @@ const products = [];
 
 router.get("/add-product", (req, res, next) => {
   // fok 2) grab data entered into form
-  res.render("add-product", { pageTitle: "Add Product HBS" });
+  res.render("add-product", {
+    pageTitle: "Add Product HBS",
+    product: true,
+    layout: "main-layout",
+  });
 });
 
 router.post("/add-product", (req, res) => {

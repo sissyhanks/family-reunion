@@ -10,9 +10,17 @@ const expressHBS = require("express-handlebars");
 
 const app = express();
 
-app.engine("handlebars", expressHBS());
-app.set("view engine", "handlebars");
-app.set("views, views");
+// pass in options in handlebars registration to indicate things like where template is located & the default template file
+app.engine(
+  "hbs",
+  expressHBS({
+    layoutsDir: __dirname + "/views/layouts",
+    default: "main-layout",
+    extname: "hbs",
+  })
+);
+app.set("view engine", "hbs");
+app.set("views", "views");
 
 const adminData = require("./routes/admin");
 const shopRoutes = require("./routes/shop");
@@ -32,7 +40,9 @@ const rootDir = require("./util/path");
 
 app.use((req, res, next) => {
   const products = adminData.products;
-  res.status(404).render("404", { pageTitle: "HBS Page Not Found" });
+  res
+    .status(404)
+    .render("404", { pageTitle: "HBS Page Not Found", layout: "main-layout" });
 });
 
 app.listen(PORT);
