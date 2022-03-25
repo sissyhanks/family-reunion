@@ -5,12 +5,17 @@ var PORT = process.env.PORT || 3000;
 
 const path = require("path");
 
-const adminData = require("./routes/admin");
-const shopRoutes = require("./routes/shop");
-
 const bodyParser = require("body-parser");
+const expressHBS = require("express-handlebars");
 
 const app = express();
+
+app.engine("handlebars", expressHBS());
+app.set("view engine", "handlebars");
+app.set("views, views");
+
+const adminData = require("./routes/admin");
+const shopRoutes = require("./routes/shop");
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, "public")));
@@ -26,7 +31,8 @@ app.use("/shop", shopRoutes);
 const rootDir = require("./util/path");
 
 app.use((req, res, next) => {
-  res.sendFile(path.join(rootDir, "views", "404.html"));
+  const products = adminData.products;
+  res.status(404).render("404", { pageTitle: "HBS Page Not Found" });
 });
 
 app.listen(PORT);
