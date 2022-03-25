@@ -1,0 +1,22 @@
+doctype html
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(http-equiv="X-UA-Compatible", content="IE=edge")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    //- dynamically pull title from the data object passed into the render method in route by key word to pull in value associated
+    title Page Not Found!
+    link(rel="stylesheet", href="/css/main.css")
+    //- pug recognizes block for hooks usage and block (names are created by author) and can hook into content from other views
+    block styles 
+  body
+    header.main-header
+      nav.main-header__nav
+        ul.main-header__item-list
+          li.main-header__item
+            a(href="/shop") Shop
+          class.main-header__item
+            a(href="/admin/add-product") Add Product
+
+    block content
+
