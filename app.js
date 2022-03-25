@@ -30,7 +30,10 @@ app.set("views", "views");
 const rootDir = require("./util/path");
 
 app.use((req, res, next) => {
-  res.render("404");
+  res.render("404", {
+    docTitle: "Page not Found",
+    path: "/404",
+  });
 });
 
 app.listen(3000);

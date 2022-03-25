@@ -23,6 +23,7 @@ router.get("/", (req, res, next) => {
     // build object... docTitle is hard coded and prods pulls form the products array built from add-=product page
     docTitle: "Shop",
     prods: products,
+    path: "/shop",
   });
 });
 // rendp 3) pass in the data as an object that will be use as a key name in rendering

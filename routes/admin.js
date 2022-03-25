@@ -11,7 +11,11 @@ const router = express.Router();
 const products = [];
 
 router.get("/add-product", (req, res, next) => {
-  res.render("add-product", { docTitle: "Add Product" });
+  res.render("add-product", {
+    docTitle: "Add Product",
+    // for dynamic class type injection in pug add path so view can tell where the page was loaded from
+    path: "/admin.add-product",
+  });
 });
 
 router.post("/add-product", (req, res) => {

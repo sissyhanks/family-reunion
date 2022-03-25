@@ -1,45 +1,29 @@
-//- pug does not use HTML by typing html, and selecting the HTML5 option pug template will generate in pug style
+extends layouts/main-layout.pug
 
-  //- indentation matters in pug >> nesting structure with indentation
-  
-  //- dot notation to indicate classes
-doctype html
-html(lang="en")
-  head
-    meta(charset="UTF-8")
-    meta(http-equiv="X-UA-Compatible", content="IE=edge")
-    meta(name="viewport", content="width=device-width, initial-scale=1.0")
-    //- dynamically pull title from the data object passed into the render method in route by key word to pull in value associated
-    title #{docTitle}
-    link(rel="stylesheet", href="/css/main.css")
-    link(rel="stylesheet", href="/css/product.css")
-  body 
-    header.main-header 
-      nav.main-header__nav
-        ul.main-header__item-list
-          li.main-header__item
-            a.active(href="/shop") Shop
-          li.main-header__item
-            a(href="/admin/add-product") Add Product
-    main
-      //- can do if else >> if array of data is greater than 0 output the data ?? else do other *** array is the variable name passed in through render method in route
-      if prods.length > 0
-        //- top level assumption is that tag is div
-        .grid
-          //- multiple classes are merged and concatenated by dots
-          //- iteration create loop by using each (from pug INTEND AFTER CREATING LOOP) you name the individual thing of the array that is passed in in the object in the route 
-          each product in prods
-            article.card.product-item
-              header.card__header
-                //- output references the original key value pair of data entry ... that is then called and passed in route
-                h1.product__title #{product.title}
-              .card__image
-                img(src="https://cdn.pixabay.com/photo/2016/03/31/20/51/book-1296045_960_720.png", alt="A Book")
+//- hook into the style block and ass page specific CSS files
+block styles
+  link(rel="stylesheet", href="/css/product.css")
 
-              .card__content
-                h2.product__price $19.99
-                  p.product__description A very interesting book about so many even more interesting things!
-              .card__actions
-                button.btn Add to Cart
-      else
-        h1 No Products
+block content
+  main
+    //- can do if else >> if array of data is greater than 0 output the data ?? else do other *** array is the variable name passed in through render method in route
+    if prods.length > 0
+      //- top level assumption is that tag is div
+      .grid
+        //- multiple classes are merged and concatenated by dots
+        //- iteration create loop by using each (from pug INTEND AFTER CREATING LOOP) you name the individual thing of the array that is passed in in the object in the route 
+        each product in prods
+          article.card.product-item
+            header.card__header
+              //- output references the original key value pair of data entry ... that is then called and passed in route
+              h1.product__title #{product.title}
+            .card__image
+              img(src="https://cdn.pixabay.com/photo/2016/03/31/20/51/book-1296045_960_720.png", alt="A Book")
+
+            .card__content
+              h2.product__price $19.99
+                p.product__description A very interesting book about so many even more interesting things!
+            .card__actions
+              button.btn Add to Cart
+    else
+      h1 No Products
