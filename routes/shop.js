@@ -13,7 +13,7 @@ router.get("/", (req, res, next) => {
   const products = adminData.products;
   // fok 2) grab data entered into form
   res.render("shop", {
-    title: "Shopp",
+    title: "Shop",
     products: products,
     add: false,
     store: true,
