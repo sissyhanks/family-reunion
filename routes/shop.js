@@ -10,9 +10,14 @@ const adminData = require("./admin");
 const router = express.Router();
 
 router.get("/", (req, res, next) => {
+  const products = adminData.products;
   // fok 2) grab data entered into form
-  console.log(adminData.products);
-  res.sendFile(path.join(rootDir, "views", "shop.html"));
+  res.render("shop", {
+    title: "Shop",
+    products: products,
+    add: false,
+    store: true,
+  });
 });
 
 module.exports = router;

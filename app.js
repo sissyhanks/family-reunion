@@ -9,8 +9,11 @@ const adminData = require("./routes/admin");
 const shopRoutes = require("./routes/shop");
 
 const bodyParser = require("body-parser");
+// const ejs = require("ejs");
 
 const app = express();
+
+app.set("view engine", "ejs");
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, "public")));
@@ -26,7 +29,7 @@ app.use("/shop", shopRoutes);
 const rootDir = require("./util/path");
 
 app.use((req, res, next) => {
-  res.sendFile(path.join(rootDir, "views", "404.html"));
+  res.render("404", { title: "404", add: false, store: false });
 });
 
 app.listen(PORT);
