@@ -4,20 +4,14 @@ const path = require("path");
 const express = require("express");
 
 const rootDir = require("../util/path");
+const productsData = require("../controllers/products");
 
 const router = express.Router();
 
 // fok 1) create empty array to push values to
 const products = [];
 
-router.get("/add-product", (req, res, next) => {
-  res.render("add-product", {
-    title: "Add Product",
-    product: true,
-    add: true,
-    store: false,
-  });
-});
+router.get("/add-product", productsData.getAddProduct);
 
 router.post("/add-product", (req, res) => {
   console.log(req.body);

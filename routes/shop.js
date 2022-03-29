@@ -3,7 +3,6 @@ const path = require("path");
 
 const express = require("express");
 
-const rootDir = require("../util/path");
 // fok 1) import the product info from the admin js file
 const adminData = require("./admin");
 
