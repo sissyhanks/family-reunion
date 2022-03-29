@@ -8,15 +8,8 @@ const adminData = require("./admin");
 
 const router = express.Router();
 
-router.get("/", (req, res, next) => {
-  const products = adminData.products;
-  // fok 2) grab data entered into form
-  res.render("shop", {
-    title: "Shop",
-    products: products,
-    add: false,
-    store: true,
-  });
-});
+const shopController = require("../controllers/products");
+
+router.get("/", shopController.getShopInfo);
 
 module.exports = router;

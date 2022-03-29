@@ -5,8 +5,9 @@ var PORT = process.env.PORT || 3000;
 
 const path = require("path");
 
-const adminData = require("./routes/admin");
+const adminRoutes = require("./routes/admin");
 const shopRoutes = require("./routes/shop");
+const fofController = require("./controllers/404");
 
 const bodyParser = require("body-parser");
 // const ejs = require("ejs");
@@ -20,7 +21,7 @@ app.use(express.static(path.join(__dirname, "public")));
 
 //the import variable name is admin data >> it pulls in ALL export info >> do dot and then name of export to grab specifically what is needed
 //adminData refers to all exports from admin routes file and routes is just the routing logic
-app.use("/admin", adminData.routes);
+app.use("/admin", adminRoutes);
 app.use("/shop", shopRoutes);
 
 // this function will run before every app instance
@@ -28,9 +29,7 @@ app.use("/shop", shopRoutes);
 
 const rootDir = require("./util/path");
 
-app.use((req, res, next) => {
-  res.render("404", { title: "404", add: false, store: false });
-});
+app.use(fofController.get404);
 
 app.listen(PORT);
 

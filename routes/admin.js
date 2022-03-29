@@ -3,27 +3,18 @@ const path = require("path");
 
 const express = require("express");
 
-const rootDir = require("../util/path");
-const productsData = require("../controllers/products");
+const productsController = require("../controllers/products");
 
 const router = express.Router();
 
-// fok 1) create empty array to push values to
-const products = [];
+router.get("/add-product", productsController.getAddProduct);
 
-router.get("/add-product", productsData.getAddProduct);
-
-router.post("/add-product", (req, res) => {
-  console.log(req.body);
-  // fok 3) push returned info into product... return is an object, so push object
-  products.push({ title: req.body.title });
-  res.redirect("/shop");
-});
+router.post("/add-product", productsController.postAddProduct);
 
 //multiple exports from this page with router info as well as form value info.
 //instead of module.exports split into exports.variable
 //this means that in the routing the exports need to be specificity named for what is needed
 //split it up by naming the import of the routes adminData and then dot the name of the export you are grabbing
-exports.routes = router;
+module.exports = router;
 // fok 2) export saved data
-exports.products = products;
+// exports.products = products;
